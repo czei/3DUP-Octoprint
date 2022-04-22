@@ -27,13 +27,13 @@ class ThreedupPlugin(octoprint.plugin.StartupPlugin,
 
     def callback(self, comm, parsed_temps):
         url = self._settings.get(["url"])
-        self._logger.info("The URL is (more: %s)" % url )
+        # self._logger.info("The URL is (more: %s)" % url )
         r = requests.get(url)
         v = r.text.split(" ")
-        self._logger.info("Parsed Temps")
-        self._logger.info(v[0])
-        self._logger.info(v[1])
-        self._logger.info("/n")
+        # self._logger.info("Parsed Temps")
+        # self._logger.info(v[0])
+        # self._logger.info(v[1])
+        # self._logger.info("/n")
 
         # Convert Fahrenheit to Celsius
         val1 = int(((int(v[0])-32)*5) / 9)
