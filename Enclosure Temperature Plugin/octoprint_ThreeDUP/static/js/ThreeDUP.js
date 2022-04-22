@@ -5,9 +5,9 @@
  * License: AGPLv3
  */
 $(function() {
-    function TemperaturelegendmoverViewModel(parameters) {
+    function ThreeDUPViewModel(parameters) {
 
-        var PLUGIN_ID = "TemperatureLegendMover";
+        var PLUGIN_ID = "ThreeDUP";
         var self = this;
 
         self.loginStateViewModel = parameters[0];
@@ -49,7 +49,7 @@ $(function() {
      * and a full list of the available options.
      */
     OCTOPRINT_VIEWMODELS.push({
-        construct: TemperaturelegendmoverViewModel,
+        construct: ThreeDUPViewModel,
         // ViewModels your plugin depends on, e.g. loginStateViewModel, settingsViewModel, ...
         dependencies: [
             "loginStateViewModel",
@@ -58,7 +58,7 @@ $(function() {
         ],
         // Elements to bind to, e.g. #settings_plugin_TemperatureLegendMover, #tab_plugin_TemperatureLegendMover, ...
         elements: [
-            document.getElementById("temperatureLegendMover_plugin_settings")
+            document.getElementById("ThreeDUP_plugin_settings")
         ]
     });
 });
