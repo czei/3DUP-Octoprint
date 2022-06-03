@@ -35,7 +35,7 @@ class ThreedupPlugin(octoprint.plugin.StartupPlugin,
         # Convert Fahrenheit to Celsius
         val1 = int(((int(v['temp1'])-32)*5) / 9)
         val2 = int(((int(v['temp2'])-32)*5) / 9)
-        val3 = int(((int(v['voc'])-32)*5) / 9)
+        val3 = int(int(v['voc']))
         parsed_temps.update(Temp1=(val1,150))
         parsed_temps.update(Temp2=(val2,150))
         parsed_temps.update(VOC=(val3,150))
