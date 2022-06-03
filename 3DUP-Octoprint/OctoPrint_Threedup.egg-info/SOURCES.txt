@@ -1,4 +1,6 @@
+MANIFEST.in
 README.md
+__init__.py
 setup.cfg
 setup.py
 OctoPrint_Threedup.egg-info/PKG-INFO
@@ -8,3 +10,11 @@ OctoPrint_Threedup.egg-info/entry_points.txt
 OctoPrint_Threedup.egg-info/not-zip-safe
 OctoPrint_Threedup.egg-info/requires.txt
 OctoPrint_Threedup.egg-info/top_level.txt
+octoprint_ThreeDUP/__init__.py
+octoprint_ThreeDUP/static/css/ThreeDUP.css
+octoprint_ThreeDUP/static/js/ThreeDUP.js
+octoprint_ThreeDUP/static/less/ThreeDUP.less
+octoprint_ThreeDUP/templates/README.txt
+octoprint_ThreeDUP/templates/ThreeDUP_navbar.jinja2
+octoprint_ThreeDUP/templates/ThreeDUP_settings.jinja2
+octoprint_ThreeDUP/translations/README.txt

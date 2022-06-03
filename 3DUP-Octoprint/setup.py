@@ -18,7 +18,7 @@ plugin_version = "1.0.0"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = """TODO"""
+plugin_description = """Graphs temperature and VOC data from 3DUPfitters touchscreen device"""
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
 plugin_author = "3DUPFitters LLC"
@@ -46,6 +46,7 @@ plugin_requires = []
 plugin_additional_data = []
 
 # Any additional python packages you need to install with your plugin that are not contained in <plugin_package>.*
+# plugin_additional_packages = [octoprint_plotlytempgraph]
 plugin_additional_packages = []
 
 # Any python packages within <plugin_package>.* you do NOT want to install with your plugin
