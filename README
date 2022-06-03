@@ -1,0 +1,31 @@
+This describes development of the ThreeDUP Octoprint plugin to display temperatures in Octoprint.
+
+This will be facilitated using this Octoprint plugin:
+
+https://plugins.octoprint.org/plugins/plotlytempgraph/
+
+To install the working version of our plugin cd into 3DUP-octoprint first create
+a virtual python environment:
+
+virtualenv venv
+source ./venv/bin/activate.csh
+pip install -e .[develop,plugins]
+
+
+To install the current code, from 3DUP-octoprint:
+
+../OctoPrint/venv3/bin/octoprint dev plugin:install
+
+To run the test Octoprint server:
+
+../OctoPrint/venv3/bin/octoprint serve --port 4000
+
+There is also a test web server to simulate the Touchscreen web server running in Node and javascript.
+It is stored in /Development/TemperatureWebServer.
+
+> node server.js
+
+It runs on port 8081 and sends out JSON for two temperatures and the VOC.
+
+
+

@@ -1,108 +1,64 @@
-# coding=utf-8
-from __future__ import absolute_import, division, print_function, unicode_literals
+coding=utf-8
+from __future__ import absolute_import
 
-### (Don't forget to remove me)
-# This is a basic skeleton for your plugin's __init__.py. You probably want to adjust the class name of your plugin
-# as well as the plugin mixins it's subclassing from. This is really just a basic skeleton to get you started,
-# defining your plugin as a template plugin, settings and asset plugin. Feel free to add or remove mixins
-# as necessary.
-#
-# Take a look at the documentation on what other plugin mixins are available.
-import flask
 import octoprint.plugin
+import random
+import requests
+import json
 
-class ThreeDUPPlugin(octoprint.plugin.SettingsPlugin,
-                                   octoprint.plugin.AssetPlugin,
-                                   octoprint.plugin.TemplatePlugin,
-								   octoprint.plugin.SimpleApiPlugin):
 
-    # Save URL for getting the Touchscreen temp values
-    def on_startup(self):
-        self._logger.info("ThreeDUPPlugin is ready!")
-        self._logger.info("ThreeDUP! (more: %s)" % self._settings.get(["url"]))
+class ThreedupPlugin(octoprint.plugin.StartupPlugin,
+                     octoprint.plugin.TemplatePlugin,
+                     octoprint.plugin.SettingsPlugin):
+
+    def on_after_startup(self):
+        self._logger.info("Hello World! (more: %s)" % self._settings.get(["url"]))
 
     def get_settings_defaults(self):
-        return dict(url="https://en.wikipedia.org/wiki/Hello_world")
+        return dict(url="http://localtouchscreen:8081")
 
-    #def get_template_vars(self):
-    #    return dict(url=self._settings.get(["url"]))
+    # def get_template_vars(self):
+    # return dict(url=self._settings.get(["url"]))
 
-	# to allow the frontend to trigger an GET call
-	#def on_api_get(self, request):
-	#	if len(request.values) != 0:
-	#		action = request.values["action"]
-#
-#			# deceide if you want the reset function in you settings dialog
-#			if "isResetSettingsEnabled" == action:
-#				return flask.jsonify(enabled="true")
-#
-#			if "resetSettings" == action:
-#				self._settings.set([], self.get_settings_defaults())
-#				self._settings.save()
-#				return flask.jsonify(self.get_settings_defaults())
-#		pass
+    def get_template_configs(self):
+        return [
+            dict(type="navbar", custom_bindings=False),
+            dict(type="settings", custom_bindings=False)
+        ]
 
-	##~~ SettingsPlugin mixin
-#	def get_settings_defaults(self):
-#		return dict(
-#			legendPositionMode="nw"
-#		)
+    def callback(self, comm, parsed_temps):
+        url = self._settings.get(["url"])
+        # self._logger.info("The URL is (more: %s)" % url )
+        r = requests.get(url)
+        # v = r.text.split(" ")
+        v = json.loads(r.text)
 
-	##~~ AssetPlugin mixin
-#	def get_assets(self):
-		# Define your plugin's asset files to automatically include in the
-		# core UI here.
-#		return dict(
-#			js=[
-#				"js/ThreeDUP.js",
-#				"js/ResetSettingsUtilV2.js"
-#			],
-#			css=["css/ThreeDUP.css"],
-#			less=["less/ThreeDUP.less"]
-#		)
+        # Convert Fahrenheit to Celsius
+        val1 = int(((int(v['temp1'])-32)*5) / 9)
+        val2 = int(((int(v['temp2'])-32)*5) / 9)
+        val3 = int(((int(v['voc'])-32)*5) / 9)
+        parsed_temps.update(Temp1=(val1,150))
+        parsed_temps.update(Temp2=(val2,150))
+        parsed_temps.update(VOC=(val3,150))
 
-	##~~ Softwareupdate hook
-#	def get_update_information(self):
-		# Define the configuration for your plugin to use with the Software Update
-		# Plugin here. See https://docs.octoprint.org/en/master/bundledplugins/softwareupdate.html
-		# for details.
-#		return dict(
-#			ThreeDUPPlugin=dict(
-#				displayName="ThreeDUPPlugin",
-#				displayVersion=self._plugin_version,
+        # parsed_temps.update(test=(random.uniform(99,101),100))
+        # parsed_temps.update(test2=(random.uniform(199,201),200))
 
-				# version check: github repository
-#				type="github_release",
-#				user="czei",
-#				repo="3DUP-Octoprint",
-#				current=self._plugin_version,
-
-				# update method: pip
-				#pip="https://github.com/OllisGit/OctoPrint-TemperatureLegendMover/releases/latest/download/master.zip"
-#				pip="https://github.com/czei/3DUP-Octoprint/releases/latest/download/master.zip"
-#			)
-#		)
-
+        return parsed_temps
 
 # If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
 # ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that
 # can be overwritten via __plugin_xyz__ control properties. See the documentation for that.
-__plugin_name__ = "ThreeDUP"
+__plugin_name__ = "Threedup Plugin"
 
-# Starting with OctoPrint 1.4.0 OctoPrint will also support to run under Python 3 in addition to the deprecated
-# Python 2. New plugins should make sure to run under both versions for now. Uncomment one of the following
-# compatibility flags according to what Python versions your plugin supports!
-#__plugin_pythoncompat__ = ">=2.7,<3" # only python 2
-__plugin_pythoncompat__ = ">=3,<4" # only python 3
-#__plugin_pythoncompat__ = ">=2.7,<4" # python 2 and 3
-__plugin_implementation__ = ThreeDUPPlugin()
+# Set the Python version your plugin is compatible with below. Recommended is Python 3 only for all new plugins.
+# OctoPrint 1.4.0 - 1.7.x run under both Python 3 and the end-of-life Python 2.
+# OctoPrint 1.8.0 onwards only supports Python 3.
+__plugin_pythoncompat__ = ">=3,<4"  # Only Python 3
+__plugin_implementation__ = ThreedupPlugin()
 
-#def __plugin_load__():
-#	global __plugin_implementation__
-#	__plugin_implementation__ = ThreeDUPPlugin()
-#
-#	global __plugin_hooks__
-#	__plugin_hooks__ = {
-#		"octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
-#	}
 
+__plugin_hooks__ = {
+
+    "octoprint.comm.protocol.temperatures.received": __plugin_implementation__.callback
+}
