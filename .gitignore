@@ -1,0 +1,38 @@
+
+Enclosure Temperature Plugin/.DS_Store
+Enclosure Temperature Plugin/.idea/Enclosure Temperature Plugin.iml
+Enclosure Temperature Plugin/.idea/misc.xml
+Enclosure Temperature Plugin/.idea/modules.xml
+Enclosure Temperature Plugin/.idea/runConfigurations.xml
+Enclosure Temperature Plugin/.idea/vcs.xml
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/dependency_links.txt
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/entry_points.txt
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/not-zip-safe
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/PKG-INFO
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/requires.txt
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/SOURCES.txt
+Enclosure Temperature Plugin/3DUP_Enclosure_Temperature.egg-info/top_level.txt
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/__init__.py
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/static/.DS_Store
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/static/css/3DUP.css
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/static/js/3DUP.js
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/static/js/ResetSettingsUtilV2.js
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/static/less/3DUP.less
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/templates/3DUP_settings.jinja2
+Enclosure Temperature Plugin/build/lib/octoprint_3DUP/templates/README.txt
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/__init__.py
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/static/.DS_Store
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/static/css/ThreeDUP.css
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/static/js/ResetSettingsUtilV2.js
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/static/js/ThreeDUP.js
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/static/less/ThreeDUP.less
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/templates/README.txt
+Enclosure Temperature Plugin/build/lib/octoprint_ThreeDUP/templates/ThreeDUP_settings.jinja2
+Enclosure Temperature Plugin/dist/3DUP_Enclosure_Temperature-1.0.0-py3.9.egg
+Enclosure Temperature Plugin/octoprint_3DUP_EnclosureTemperature/.DS_Store
+Enclosure Temperature Plugin/octoprint_3DUP_EnclosureTemperature/static/.DS_Store
+Enclosure Temperature Plugin/octoprint_ThreeDUP/.DS_Store
+Enclosure Temperature Plugin/octoprint_ThreeDUP/static/.DS_Store
+OctoPrint/
+Enclosure Temperature Plugin/octoprint_3DUP_EnclosureTemperature/.DS_Store
+Enclosure Temperature Plugin/octoprint_3DUP_EnclosureTemperature/static/.DS_Store
