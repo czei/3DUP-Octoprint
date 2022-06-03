@@ -4,6 +4,7 @@ from __future__ import absolute_import
 import octoprint.plugin
 import random
 import requests
+import json
 
 
 class ThreedupPlugin(octoprint.plugin.StartupPlugin,
@@ -29,17 +30,16 @@ class ThreedupPlugin(octoprint.plugin.StartupPlugin,
         url = self._settings.get(["url"])
         # self._logger.info("The URL is (more: %s)" % url )
         r = requests.get(url)
-        v = r.text.split(" ")
-        # self._logger.info("Parsed Temps")
-        # self._logger.info(v[0])
-        # self._logger.info(v[1])
-        # self._logger.info("/n")
+        # v = r.text.split(" ")
+        v = json.loads(r.text)
 
         # Convert Fahrenheit to Celsius
-        val1 = int(((int(v[0])-32)*5) / 9)
-        val2 = int(((int(v[1])-32)*5) / 9)
-        parsed_temps.update(test=(val1,150))
-        parsed_temps.update(test2=(val2,150))
+        val1 = int(((int(v['temp1'])-32)*5) / 9)
+        val2 = int(((int(v['temp2'])-32)*5) / 9)
+        val3 = int(((int(v['voc'])-32)*5) / 9)
+        parsed_temps.update(Temp1=(val1,150))
+        parsed_temps.update(Temp2=(val2,150))
+        parsed_temps.update(VOC=(val3,150))
 
         # parsed_temps.update(test=(random.uniform(99,101),100))
         # parsed_temps.update(test2=(random.uniform(199,201),200))
