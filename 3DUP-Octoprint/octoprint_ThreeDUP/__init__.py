@@ -38,7 +38,7 @@ class ThreedupPlugin(octoprint.plugin.StartupPlugin,
         val3 = int(int(v['voc']))
         parsed_temps.update(Temp1=(val1,150))
         parsed_temps.update(Temp2=(val2,150))
-        parsed_temps.update(VOC=(val3,150))
+        parsed_temps.update(VOC=(val3,250))
 
         # parsed_temps.update(test=(random.uniform(99,101),100))
         # parsed_temps.update(test2=(random.uniform(199,201),200))

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: OctoPrint-Threedup
-Version: 1.0.0
+Version: 1.0.1
 Summary: Graphs temperature and VOC data from 3DUPfitters touchscreen device
 Home-page: https://github.com/czei/3DUP-Octoprint
 Author: 3DUPFitters LLC
